@@ -1,0 +1,1 @@
+from bot.middlewares.session import DbSessionMiddleware # noqa

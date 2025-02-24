@@ -1,7 +1,7 @@
 
-# AlembicTemplate
+# TGBotAlembicTemplate
 
-A template for managing database migrations with **Alembic**, **SQLAlchemy**, and **PostgreSQL**.
+A template for managing database migrations with **Alembic**, **SQLAlchemy**, and **PostgreSQL** for **Aiogram**.
 
 ---
 
@@ -24,28 +24,3 @@ Upgrade your database to the latest revision:
 ```bash
 alembic upgrade head
 ```
-
----
-
-## 🔧 Configuration
-
-### .env Example
-Create a `.env` file in the root directory with the following structure:
-```
-POSTGRES_DB=your_database_name
-POSTGRES_HOST=localhost
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=your_password
-```
-
-Make sure to replace `your_database_name` and `your_password` with the actual values.
-
----
-
-## 🛠 Requirements
-- Python 3.10+
-- PostgreSQL
-- Required Python packages (install via pip):
-  ```bash
-  pip install -r requirements.txt
-  ```
