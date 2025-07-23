@@ -3,3 +3,5 @@ asyncpg==0.30.0
 python-dotenv==1.0.1
 SQLAlchemy==2.0.36
 aiogram==3.4.1
+requests==2.32
+greenlet==3.2.3

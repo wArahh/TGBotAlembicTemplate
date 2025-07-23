@@ -1,6 +1,6 @@
 from sqlalchemy.ext.asyncio import create_async_engine
-from bot.service.config import PostgresConfig
 
+from app.shared.constraints import PostgresConfig
 
 DATABASE_URL = (
     f'postgresql+asyncpg://'

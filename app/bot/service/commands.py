@@ -1,6 +1,7 @@
 from aiogram import Bot
 from aiogram.types import BotCommand, BotCommandScopeDefault
-from bot.service.config import Constraints
+
+from app.shared.constraints import Constraints
 
 
 async def set_commands(bot: Bot):
