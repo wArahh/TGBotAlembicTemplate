@@ -1,1 +1,0 @@
-from bot.handlers.main import main_router # noqa
