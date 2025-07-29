@@ -97,7 +97,7 @@ def configure_logging():
 
     bot_logger = logging.getLogger('bot_logger')
     bot_handler = RotatingFileHandler(
-        filename='../logs/bot.log',
+        filename=root / 'logs' / 'bot.log',
         maxBytes=5 * 1024 * 1024,
         backupCount=3,
         encoding='utf-8'
