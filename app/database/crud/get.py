@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.bot.database.models import Admin
+from app.database.models import Admin
 
 
 async def check_user_admin(
