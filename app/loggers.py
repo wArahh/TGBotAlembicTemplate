@@ -1,12 +1,9 @@
-import asyncio
 import logging
+from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
 import requests
-import subprocess
-from logging.handlers import RotatingFileHandler
 
-from app.bot.main import start_bot
 from app.shared.constraints import TelegramConfig
 
 
@@ -72,8 +69,17 @@ class TelegramLogHandler(logging.Handler):
             )
 
 
+_logger_initialized = False
+
+
 def configure_logging():
-    logs_dir = Path('logs')
+    global _logger_initialized
+    if _logger_initialized:
+        return
+    _logger_initialized = True
+
+    root = Path(__file__).parent.parent
+    logs_dir = root / 'logs'
     logs_dir.mkdir(exist_ok=True)
     log_file = logs_dir / 'bot.log'
     log_file.touch(exist_ok=True)
@@ -91,7 +97,7 @@ def configure_logging():
 
     bot_logger = logging.getLogger('bot_logger')
     bot_handler = RotatingFileHandler(
-        filename='logs/bot.log',
+        filename='../logs/bot.log',
         maxBytes=5 * 1024 * 1024,
         backupCount=3,
         encoding='utf-8'
@@ -99,13 +105,3 @@ def configure_logging():
     bot_handler.setFormatter(ConsoleFormatter())
     bot_logger.addHandler(bot_handler)
     bot_logger.addHandler(telegram_handler)
-
-
-async def run_project():
-    subprocess.run(['alembic', 'upgrade', 'head'])
-    configure_logging()
-    await start_bot()
-
-
-if __name__ == '__main__':
-    asyncio.run(run_project())
