@@ -10,8 +10,8 @@ from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
 
-from app.bot.database.engine import DATABASE_URL
-from app.bot.database.models import Base
+from app.database.engine import DATABASE_URL
+from app.database.models import Base
 
 config = context.config
 

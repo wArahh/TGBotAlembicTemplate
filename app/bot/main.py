@@ -1,4 +1,7 @@
+import asyncio
 import logging
+import subprocess
+from pathlib import Path
 
 from aiogram import Dispatcher, Bot
 from aiogram.client.default import DefaultBotProperties
@@ -7,10 +10,11 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.strategy import FSMStrategy
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
-from app.bot.database.engine import engine
 from app.bot.handlers import main_router
 from app.bot.middlewares import DbSessionMiddleware
 from app.bot.service.commands import set_commands
+from app.database.engine import engine
+from app.loggers import configure_logging
 from app.shared.constraints import TelegramConfig
 
 logging.basicConfig(
@@ -48,3 +52,10 @@ async def start_bot():
         await dp.start_polling(bot)
     except Exception as e:
         logging.error(e)
+
+
+if __name__ == '__main__':
+    root = Path(__file__).parent.parent.parent
+    subprocess.run(['alembic', 'upgrade', 'head'], cwd=root)
+    configure_logging()
+    asyncio.run(start_bot())
