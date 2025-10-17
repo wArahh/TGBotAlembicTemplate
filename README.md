@@ -24,3 +24,5 @@ Upgrade your database to the latest revision:
 ```bash
 alembic upgrade head
 ```
+
+# todo: debug mode
