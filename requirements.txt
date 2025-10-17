@@ -5,3 +5,4 @@ SQLAlchemy==2.0.36
 aiogram==3.4.1
 requests==2.32
 greenlet==3.2.3
+fluentogram==1.2.1

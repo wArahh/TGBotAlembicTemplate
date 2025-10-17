@@ -8,22 +8,17 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.fsm.strategy import FSMStrategy
+from fluentogram import TranslatorHub
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
 from app.bot.handlers import main_router
 from app.bot.middlewares import DbSessionMiddleware
+from app.bot.middlewares.i18n import TranslatorRunnerMiddleware
 from app.bot.service.commands import set_commands
 from app.database.engine import engine
 from app.loggers import configure_logging
+from app.services.i18n import create_translator_hub
 from app.shared.constraints import TelegramConfig
-
-logging.basicConfig(
-    format='%(levelname)s %(filename)s:%(lineno)d '
-           '[%(asctime)s] - %(name)s - %(message)s',
-    level=logging.INFO
-)
-
-logs = logging.getLogger(__name__)
 
 
 async def start_bot():
@@ -41,7 +36,10 @@ async def start_bot():
         engine(),
         expire_on_commit=False,
     )
+
     dp.update.outer_middleware(DbSessionMiddleware(session))
+    translator_hub: TranslatorHub = create_translator_hub()
+    dp.update.middleware(TranslatorRunnerMiddleware())
 
     bot = Bot(
         token=TelegramConfig.TELEGRAM_TOKEN,
@@ -49,7 +47,7 @@ async def start_bot():
     )
     await set_commands(bot)
     try:
-        await dp.start_polling(bot)
+        await dp.start_polling(bot, _translator_hub=translator_hub)
     except Exception as e:
         logging.error(e)
 
