@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
 from app.shared.config import PostgresConfig
 
@@ -12,3 +12,9 @@ DATABASE_URL = (
 
 def engine():
     return create_async_engine(DATABASE_URL)
+
+
+AsyncSessionLocal = async_sessionmaker(
+    bind=engine(),
+    expire_on_commit=False
+)

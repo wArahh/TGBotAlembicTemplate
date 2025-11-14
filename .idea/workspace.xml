@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f2b882f1-7a53-42c2-8bcf-97cd2923ca43" name="Changes" comment="added debug mode">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f2b882f1-7a53-42c2-8bcf-97cd2923ca43" name="Changes" comment="deleteme added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -178,6 +176,7 @@
       <workItem from="1760743063411" duration="40000" />
       <workItem from="1763108277187" duration="1153000" />
       <workItem from="1763109456413" duration="496000" />
+      <workItem from="1763110100395" duration="75000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -355,7 +354,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763109723707</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="deleteme added">
+      <option name="closed" value="true" />
+      <created>1763110172392</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1763110172392</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +390,8 @@
     <MESSAGE value="renames" />
     <MESSAGE value="added i18n in popups" />
     <MESSAGE value="added debug mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="added debug mode" />
+    <MESSAGE value="deleteme added" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleteme added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/password_generator$get.coverage" NAME="get Coverage Results" MODIFIED="1736369196090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/database/crud" />
