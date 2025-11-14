@@ -18,7 +18,7 @@ from app.bot.service.commands import set_commands
 from app.database.engine import engine
 from app.loggers import configure_logging
 from app.services.i18n import create_translator_hub
-from app.shared.constraints import TelegramConfig
+from app.shared.config import TelegramConfig
 
 
 async def start_bot():
@@ -45,7 +45,10 @@ async def start_bot():
         token=TelegramConfig.TELEGRAM_TOKEN,
         default=DefaultBotProperties(parse_mode=ParseMode.HTML),
     )
-    await set_commands(bot)
+    await set_commands(
+        bot=bot,
+        translator_hub=translator_hub
+    )
     try:
         await dp.start_polling(bot, _translator_hub=translator_hub)
     except Exception as e:

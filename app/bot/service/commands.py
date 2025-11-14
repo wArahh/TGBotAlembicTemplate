@@ -1,20 +1,20 @@
 from aiogram import Bot
 from aiogram.types import BotCommand, BotCommandScopeDefault
+from fluentogram import TranslatorHub
 
-from app.shared.constraints import Constraints
 
-
-async def set_commands(bot: Bot):
+async def set_commands(
+        bot: Bot,
+        translator_hub: TranslatorHub
+):
     """
     set bot commands in popup menu.
-
-    :param bot: telegram bot.
-    :return: set of bot commands in popup menu.
     """
+    i18n = translator_hub.get_translator_by_locale(locale='en')
     commands = [
         BotCommand(
             command='start',
-            description=Constraints.POPUP_RUN_BOT,
+            description=i18n.popup.run_bot(),
         ),
     ]
     await bot.set_my_commands(commands, BotCommandScopeDefault())
