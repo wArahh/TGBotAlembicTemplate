@@ -4,7 +4,7 @@ from pathlib import Path
 
 import requests
 
-from app.shared.constraints import TelegramConfig
+from app.shared.config import TelegramConfig, Config
 
 
 class BaseFormatter(logging.Formatter):
@@ -92,7 +92,7 @@ def configure_logging():
     console_handler.setFormatter(ConsoleFormatter())
 
     general_logger = logging.getLogger()
-    general_logger.setLevel(logging.INFO)
+    general_logger.setLevel(logging.INFO if not Config.DEBUG else logging.DEBUG)
     general_logger.addHandler(console_handler)
 
     bot_logger = logging.getLogger('bot_logger')
