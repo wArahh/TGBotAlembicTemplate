@@ -5,6 +5,6 @@ Base = declarative_base()
 
 
 class Admin(Base):
-    __tablename__ = 'admin'
+    __tablename__ = 'admins'
     id = Column(Integer, primary_key=True)
     telegram_id = Column(Integer, unique=True, nullable=False)
