@@ -1,4 +1,3 @@
-
 # TGBotAlembicTemplate
 
 A template for managing database migrations with **Alembic**, **SQLAlchemy**, and **PostgreSQL** for **Aiogram**.
