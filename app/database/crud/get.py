@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import select, exists
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database.models import Admin
@@ -14,6 +14,10 @@ async def check_user_admin(
 
     :return: True if admin, else False.
     """
-    statement = select(Admin).where(Admin.telegram_id == telegram_id)
-
-    return (await session.execute(statement)).scalar_one_or_none() is not None
+    statement = select(
+        exists()
+    ).where(
+        Admin.telegram_id == telegram_id
+    )
+    result = await session.execute(statement)
+    return result.scalar()
