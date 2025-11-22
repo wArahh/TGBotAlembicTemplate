@@ -5,8 +5,8 @@ from app.database.models import Admin
 
 
 async def check_user_admin(
+        telegram_id: int,
         session: AsyncSession,
-        telegram_id: int
 ) -> bool:
     """
     :param session: async session.
