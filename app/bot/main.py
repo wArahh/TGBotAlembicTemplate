@@ -32,12 +32,12 @@ async def start_bot():
     dp.include_routers(
         main_router,
     )
-    session = async_sessionmaker(
+    db_session = async_sessionmaker(
         engine(),
         expire_on_commit=False,
     )
 
-    dp.update.outer_middleware(DbSessionMiddleware(session))
+    dp.update.outer_middleware(DbSessionMiddleware(db_session))
     translator_hub: TranslatorHub = create_translator_hub()
     dp.update.middleware(TranslatorRunnerMiddleware())
 

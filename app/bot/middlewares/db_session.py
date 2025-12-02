@@ -16,17 +16,6 @@ class DbSessionMiddleware(BaseMiddleware):
             event: TelegramObject,
             data: Dict[str, Any],
     ) -> Any:
-        """
-        Middleware for automatically adding an asynchronous SQLAlchemy session
-        to aiogram handlers.
-
-        A new session is created for each update and injected into `data['session']`.
-        The session is automatically closed after the handler is executed.
-
-        Example handler with session access:
-            async def handler(message: Message, session: AsyncSession):
-                result = await session.execute(select(User).where(User.id == 1))
-        """
-        async with self.session_pool() as session:
-            data['session'] = session
+        async with self.session_pool() as db_session:
+            data['db_session'] = db_session
             return await handler(event, data)

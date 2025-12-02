@@ -6,10 +6,10 @@ from app.database.models import Admin
 
 async def check_user_admin(
         telegram_id: int,
-        session: AsyncSession,
+        db_session: AsyncSession,
 ) -> bool:
     """
-    :param session: async session.
+    :param db_session: async db_session.
     :param telegram_id: telegram id of user.
 
     :return: True if admin, else False.
@@ -19,5 +19,5 @@ async def check_user_admin(
     ).where(
         Admin.telegram_id == telegram_id
     )
-    result = await session.execute(statement)
+    result = await db_session.execute(statement)
     return result.scalar()

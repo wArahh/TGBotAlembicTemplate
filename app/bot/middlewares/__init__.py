@@ -1,1 +1,1 @@
-from app.bot.middlewares.session import DbSessionMiddleware # noqa
+from app.bot.middlewares.db_session import DbSessionMiddleware # noqa
